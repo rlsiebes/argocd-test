@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: highway-green
+  labels:
+    app: highway-green
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 80-3000
+      protocol: TCP
+      port: 80
+      targetPort: 3000
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: highway-green
+

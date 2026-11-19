@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webcolor-red
+  labels:
+    app: webcolor-red
+spec:
+  clusterIP: 10.217.4.142
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 80-8080
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: webcolor-red
+

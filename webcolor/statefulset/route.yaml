@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  annotations:
+    haproxy.router.openshift.io/balance: roundrobin
+    openshift.io/host.generated: 'true'
+  name: webcolor-red
+  labels:
+    app: webcolor-red
+spec:
+  host: webcolorred-jmeter.apps-crc.testing
+  to:
+    kind: Service
+    name: webcolor-red
+    weight: 100
+  port:
+    targetPort: 80-8080
+  tls:
+    termination: edge
+  wildcardPolicy: None
+

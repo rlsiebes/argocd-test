@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  annotations:
+    haproxy.router.openshift.io/balance: roundrobin
+    openshift.io/host.generated: 'true'
+  name: highway-green 
+  labels:
+    app: highway-green
+spec:
+  host: highway-green-jmeter.apps-crc.testing
+  to:
+    kind: Service
+    name: highway-green
+    weight: 100
+  port:
+    targetPort: 80-3000
+  tls:
+    termination: edge
+  wildcardPolicy: None
+
